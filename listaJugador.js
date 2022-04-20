@@ -4,9 +4,9 @@
     var listar=document.createElement("input");
     listar.setAttribute("type","button");
     listar.setAttribute("value","Listarjugadores");
-
-    document.body.appendChild(listar);
-
+    var divContenedor= document.getElementById("opciones");
+        divContenedor.appendChild(listar);
+    
     //crear promesa 
 
     var crearPromesa=function(){
