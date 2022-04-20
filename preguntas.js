@@ -1,4 +1,6 @@
-const parrafoActual = document.querySelector(`#p1`)
+const p1 = document.querySelector(`#p1`)
+const p2 = document.querySelector(`#p2`)
+const p3 = document.querySelector(`#p3`)
 const btn1 = document.querySelector(`#btn1`)
 const btn2 = document.querySelector(`#btn2`)
 const btn3 = document.querySelector(`#btn3`)
@@ -17,9 +19,9 @@ function cargarPreguntas(){
             }
         })
         console.log(preg.indice)
-        let parrafo = document.createElement('p1');
-        parrafo.innerHTML += `${preg.pregunta}`;
-        parrafoActual.appendChild(parrafo)
+        let parrafo1 = document.createElement('p1');
+        parrafo1.innerHTML += `${preg.pregunta}`;
+        p1.appendChild(parrafo1)
 
         let boton1 = document.createElement('btn1');
         boton1.innerHTML += `${preg.resp1}`;
@@ -36,6 +38,14 @@ function cargarPreguntas(){
         let boton4 = document.createElement('btn4');
         boton4.innerHTML += `${preg.resp4}`;
         btn4.appendChild(boton4)
+
+        let parrafo2 = document.createElement('p2');
+        parrafo2.innerHTML += `Por un valor de: ${preg.premio} Puntos`;
+        p2.appendChild(parrafo2)
+
+        let parrafo3 = document.createElement('p3');
+        parrafo3.innerHTML += `Su Selección es: <br><b>${preg.verdadera}</b>`;
+        p3.appendChild(parrafo3)
     })
     .catch(error => console.log("Hubo un error: " + error.message))
 }
