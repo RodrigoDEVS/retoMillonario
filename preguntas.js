@@ -42,12 +42,35 @@ function cargarPreguntas(){
         let parrafo2 = document.createElement('p2');
         parrafo2.innerHTML += `Por un valor de: ${preg.premio} Puntos`;
         p2.appendChild(parrafo2)
-
-        let parrafo3 = document.createElement('p3');
-        parrafo3.innerHTML += `Su Selección es: <br><b>${preg.verdadera}</b>`;
-        p3.appendChild(parrafo3)
     })
     .catch(error => console.log("Hubo un error: " + error.message))
 }
 
+function imprimirSeleccion1(){
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b>`
+}
+document.getElementById('btn1').onclick = function(){
+    imprimirSeleccion1();
+}
+
+function imprimirSeleccion2(){
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp2}</b>`
+}
+document.getElementById('btn2').onclick = function(){
+    imprimirSeleccion2();
+}
+
+function imprimirSeleccion3(){
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp3}</b>`
+}
+document.getElementById('btn3').onclick = function(){
+    imprimirSeleccion3();
+}
+
+function imprimirSeleccion4(){
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp4}</b>`
+}
+document.getElementById('btn4').onclick = function(){
+    imprimirSeleccion4();
+}
 cargarPreguntas();
