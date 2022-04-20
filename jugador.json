@@ -1,0 +1,45 @@
+[
+    {
+        "_id": "61c01ef51d9320f3a2646c70",
+        "name": "Rodrigo",
+        "score": 2000,
+        "__v": 0
+    },
+    {
+        "_id": "61c1557e9b7b7868d034c737",
+        "name": "Pyroclasto",
+        "__v": 0,
+        "score": 1200
+    },
+    {
+        "_id": "61c1e56d6da23b8a14d5147c",
+        "name": "Alberto Isaza",
+        "__v": 0,
+        "score": 2500
+    },
+    {
+        "_id": "61cc74ea973e19724f3082b5",
+        "name": "Fito Páez",
+        "__v": 0
+    },
+    {
+        "_id": "61cc7516973e19724f3082f1",
+        "name": "Fito Páez",
+        "__v": 0
+    },
+    {
+        "_id": "61d600d3a6bf6530cf67d128",
+        "name": "Arkangel",
+        "__v": 0
+    },
+    {
+        "_id": "6260060952719843f5a47d65",
+        "name": "Arkangel",
+        "__v": 0
+    },
+    {
+        "_id": "626058a14821d3967efa9141",
+        "name": "Pepito Perez",
+        "__v": 0
+    }
+]
