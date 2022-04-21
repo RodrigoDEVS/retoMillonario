@@ -9,7 +9,7 @@ const btn4 = document.querySelector(`#btn4`)
 let preg = {};
 
 function cargarPreguntas(){
-    (fetch('preguntas.json'))
+    (fetch('/data/preguntas.json'))
     .then(resp => resp.json())
     .then(preguntas => {
         //Math.floor(Math.random() * 10);
