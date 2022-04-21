@@ -10,48 +10,37 @@ const btn5 = document.querySelector(`#btn5`)
 let preg = {};
 let correcta  = "";
 let respuesta = ""; 
-
+console.log(document.readyState)
+function randomInteger (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 function cargarPreguntas(){
     (fetch('preguntas.json'))
     .then(resp => resp.json())
     .then(preguntas => {
         //Math.floor(Math.random() * 10);
         preguntas.map(element =>{
-            if(element.indice==(Math.floor(Math.random() * 25)+1)){
+            if(element.indice==randomInteger(1, 25)){
                 preg = (element)
             }
         })
         correcta=(preg.verdadera)
         console.log(preg.indice)
-        let parrafo1 = document.createElement('p1');
-        parrafo1.innerHTML += `${preg.pregunta}`;
-        p1.appendChild(parrafo1)
+        document.getElementById('p1').innerHTML = `${preg.pregunta}`
 
-        let boton1 = document.createElement('btn1');
-        boton1.innerHTML += `${preg.resp1}`;
-        btn1.appendChild(boton1)
+        document.getElementById('btn1').innerHTML = `${preg.resp1}`
 
-        let boton2 = document.createElement('btn2');
-        boton2.innerHTML += `${preg.resp2}`;
-        btn2.appendChild(boton2)
+        document.getElementById('btn2').innerHTML = `${preg.resp2}`
 
-        let boton3 = document.createElement('btn3');
-        boton3.innerHTML += `${preg.resp3}`;
-        btn3.appendChild(boton3)
+        document.getElementById('btn3').innerHTML = `${preg.resp3}`
 
-        let boton4 = document.createElement('btn4');
-        boton4.innerHTML += `${preg.resp4}`;
-        btn4.appendChild(boton4)
+        document.getElementById('btn4').innerHTML = `${preg.resp4}`
 
-        let parrafo2 = document.createElement('p2');
-        parrafo2.innerHTML += `Por un valor de: ${preg.premio} Puntos`;
-        p2.appendChild(parrafo2)
+        document.getElementById('p2').innerHTML = `Por un valor de: ${preg.premio} Puntos`;
     })
     .catch(error => console.log("Hubo un error: " + error.message))
 }
 cargarPreguntas();
-
-
 
 function imprimirSeleccion1(){
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b>`
@@ -95,8 +84,25 @@ document.getElementById('btn4').onclick = function(){
 }
 
 function imprimirAlerta(){
-    alert(respuesta==correcta?'Respuesta Correcta':'Respuesta Incorrecta, Sigue Intentando')
+    swal(respuesta==correcta?{title: "Respuesta Correcta", text: "Puedes Continuar", icon: "success"}:{title: "Respuesta Incorrecta", text: "Sigue Intentando", icon: "error"})
+    //Falta agregar funcionalidad
 }
 document.getElementById('btn5').onclick = function(){
     imprimirAlerta()
+    limpiarPagina()
+    cargarPreguntas()
+    
 };
+
+function limpiarPagina(){
+
+        preg = {};
+        correcta  = "";
+        respuesta = "";
+
+        //window.location.href = "index.html";  
+    
+    
+}
+
+console.log(document.readyState)
