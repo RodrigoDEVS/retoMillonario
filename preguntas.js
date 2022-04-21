@@ -84,25 +84,27 @@ document.getElementById('btn4').onclick = function(){
 }
 
 function imprimirAlerta(){
-    swal(respuesta==correcta?{title: "Respuesta Correcta", text: "Puedes Continuar", icon: "success"}:{title: "Respuesta Incorrecta", text: "Sigue Intentando", icon: "error"})
-    //Falta agregar funcionalidad
+    if(respuesta==correcta){
+        swal.fire('Respuesta Correcta')
+        cargarPreguntas()
+    }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Respuesta Incorrecta',
+                text: 'Sigue Intentando',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              setTimeout(respuestaError, 2000)    
+    }
 }
+
 document.getElementById('btn5').onclick = function(){
     imprimirAlerta()
-    limpiarPagina()
-    cargarPreguntas()
-    
 };
 
-function limpiarPagina(){
-
-        preg = {};
-        correcta  = "";
-        respuesta = "";
-
-        //window.location.href = "index.html";  
-    
-    
+function respuestaError(){
+    window.location.replace("index.html")    
 }
 
 console.log(document.readyState)
