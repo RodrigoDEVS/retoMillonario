@@ -1,111 +1,163 @@
-    const p1 = document.querySelector(`#p1`)
-    const p2 = document.querySelector(`#p2`)
-    const p3 = document.querySelector(`#p3`)
-    const btn1 = document.querySelector(`#btn1`)
-    const btn2 = document.querySelector(`#btn2`)
-    const btn3 = document.querySelector(`#btn3`)
-    const btn4 = document.querySelector(`#btn4`)
-    const btn5 = document.querySelector(`#btn5`)
+const p1 = document.querySelector(`#p1`)
+const p2 = document.querySelector(`#p2`)
+const p3 = document.querySelector(`#p3`)
+const btn1 = document.querySelector(`#btn1`)
+const btn2 = document.querySelector(`#btn2`)
+const btn3 = document.querySelector(`#btn3`)
+const btn4 = document.querySelector(`#btn4`)
+const btn5 = document.querySelector(`#btn5`)
 
-    let preg = {};
-    let correcta = "";
-    let respuesta = "";
-    function randomInteger(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+let preg = {};
+let correcta = "";
+let respuesta = "";
+
+let min = 1;
+let max = 5;
+
+let puntaje = 0;
+
+function incremento() {
+    if (puntaje < 100) {
+        min = 1
+        max = 5
+    } else if (puntaje == 100 && puntaje < 300) {
+        min = 6
+        max = 10
+    } else if (puntaje == 300 && puntaje < 600) {
+        min = 11
+        max = 15
+    } else if (puntaje == 600 && puntaje < 1000) {
+        min = 16
+        max = 20
+    } else if (puntaje == 1000 && puntaje < 1500) {
+        min = 21
+        max = 25
     }
-    function cargarPreguntas() {
-        (fetch('preguntas.json'))
-            .then(resp => resp.json())
-            .then(preguntas => {
-                let index = randomInteger(1, 25);
-                preguntas.map(element => {
-                    if (element.indice == index) {
-                        preg = (element)
-                    }
-                })
-                correcta = (preg.verdadera)
-                document.getElementById('p1').innerHTML = `${preg.pregunta}`
+}
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function cargarPreguntas() {
 
-                document.getElementById('btn1').innerHTML = `${preg.resp1}`
+    (fetch('preguntas.json'))
+        .then(resp => resp.json())
+        .then(preguntas => {
+            incremento()
+            let index = randomInteger(min, max);
+            preguntas.map(element => {
+                if (element.indice == index) {
+                    preg = (element)
+                }
 
-                document.getElementById('btn2').innerHTML = `${preg.resp2}`
-
-                document.getElementById('btn3').innerHTML = `${preg.resp3}`
-
-                document.getElementById('btn4').innerHTML = `${preg.resp4}`
-
-                document.getElementById('p2').innerHTML = `Por un valor de: <b>${preg.premio}</b> Puntos`;
             })
-            .catch(error => console.log("Hubo un error: " + error.message))
-    }
+            console.log("Pregunta No: " + preg.indice)
+            console.log("Puntaje Acumulado: " + puntaje)
+            correcta = (preg.verdadera)
+            document.getElementById('p1').innerHTML = `${preg.pregunta}`
 
-    function imprimirSeleccion1() {
-        document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b></br>`
-        document.getElementById('p3').setAttribute('value', `${preg.resp1}`)
-        respuesta = (document.getElementById('p3').getAttribute('value'))
-        console.log("respuesta: " + respuesta)
-        console.log("Correcta: " + correcta)
-    }
-    document.getElementById('btn1').onclick = function () {
-        imprimirSeleccion1();
-    }
+            document.getElementById('btn1').innerHTML = `${preg.resp1}`
 
-    function imprimirSeleccion2() {
-        document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp2}</b></br>`
-        document.getElementById('p3').setAttribute('value', `${preg.resp2}`)
-        respuesta = (document.getElementById('p3').getAttribute('value'))
-        console.log("respuesta: " + respuesta)
-    }
-    document.getElementById('btn2').onclick = function () {
-        imprimirSeleccion2();
-    }
+            document.getElementById('btn2').innerHTML = `${preg.resp2}`
 
-    function imprimirSeleccion3() {
-        document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp3}</b></br>`
-        document.getElementById('p3').setAttribute('value', `${preg.resp3}`)
-        respuesta = (document.getElementById('p3').getAttribute('value'))
-        console.log("respuesta: " + respuesta)
-    }
-    document.getElementById('btn3').onclick = function () {
-        imprimirSeleccion3();
-    }
+            document.getElementById('btn3').innerHTML = `${preg.resp3}`
 
-    function imprimirSeleccion4() {
-        document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp4}</b></br>`
-        document.getElementById('p3').setAttribute('value', `${preg.resp4}`)
-        respuesta = (document.getElementById('p3').getAttribute('value'))
-        console.log("respuesta: " + respuesta)
-    }
-    document.getElementById('btn4').onclick = function () {
-        imprimirSeleccion4();
-    }
+            document.getElementById('btn4').innerHTML = `${preg.resp4}`
 
-    function imprimirAlerta() {
-        if (respuesta == correcta) {
-            swal.fire({
-                icon: 'success',
-                title: 'Respuesta Correcta',
-                showConfirmButton: true,
-            })
-            cargarPreguntas()
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Respuesta Incorrecta',
-                text: 'Sigue Intentando',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            setTimeout(respuestaError, 2000)
+            document.getElementById('p2').innerHTML = `Por un valor de: <b>${preg.premio}</b> Puntos`;
+        })
+        .catch(error => console.log("Hubo un error: " + error.message))
+}
+
+function imprimirSeleccion1() {
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b></br>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp1}`)
+    respuesta = (document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: " + respuesta)
+    console.log("Correcta: " + correcta)
+}
+document.getElementById('btn1').onclick = function () {
+    imprimirSeleccion1();
+}
+
+function imprimirSeleccion2() {
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp2}</b></br>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp2}`)
+    respuesta = (document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: " + respuesta)
+}
+document.getElementById('btn2').onclick = function () {
+    imprimirSeleccion2();
+}
+
+function imprimirSeleccion3() {
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp3}</b></br>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp3}`)
+    respuesta = (document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: " + respuesta)
+}
+document.getElementById('btn3').onclick = function () {
+    imprimirSeleccion3();
+}
+
+function imprimirSeleccion4() {
+    document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp4}</b></br>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp4}`)
+    respuesta = (document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: " + respuesta)
+}
+document.getElementById('btn4').onclick = function () {
+    imprimirSeleccion4();
+}
+
+function imprimirAlerta() {
+    if (puntaje == 1000) {
+        swal.fire({
+            icon: 'success',
+            title: 'Has Ganado',
+            text: 'Felicitaciones!!!',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        setTimeout(terminarJuego, 2500)
+    } else if (respuesta == correcta) {
+        swal.fire({
+            icon: 'success',
+            title: 'Respuesta Correcta',
+            showConfirmButton: true,
+        })
+        cargarPreguntas()
+        if (min == 1) {
+            puntaje += 100;
+        } else if (min == 6) {
+            puntaje += 200;
+        } else if (min == 11) {
+            puntaje += 300;
+        } else if (min == 16) {
+            puntaje += 400;
+        } else if (min == 21) {
+            puntaje += 500;
         }
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Respuesta Incorrecta',
+            text: 'Sigue Intentando',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        setTimeout(respuestaError, 2000)
     }
+}
 
-    document.getElementById('btn5').onclick = function () {
-        imprimirAlerta()
-    };
+document.getElementById('btn5').onclick = function () {
+    imprimirAlerta()
+};
 
-    function respuestaError() {
-        window.location.replace("index.html")
-    }
+function respuestaError() {
+    window.location.replace("index.html")
+}
 
-    window.onload = cargarPreguntas()
+function terminarJuego() {
+    window.location.replace("final.html")
+}
+window.onload = cargarPreguntas()
