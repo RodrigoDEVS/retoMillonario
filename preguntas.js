@@ -5,8 +5,11 @@ const btn1 = document.querySelector(`#btn1`)
 const btn2 = document.querySelector(`#btn2`)
 const btn3 = document.querySelector(`#btn3`)
 const btn4 = document.querySelector(`#btn4`)
+const btn5 = document.querySelector(`#btn5`)
 
 let preg = {};
+let correcta  = "";
+let respuesta = ""; 
 
 function cargarPreguntas(){
     (fetch('preguntas.json'))
@@ -18,6 +21,7 @@ function cargarPreguntas(){
                 preg = (element)
             }
         })
+        correcta=(preg.verdadera)
         console.log(preg.indice)
         let parrafo1 = document.createElement('p1');
         parrafo1.innerHTML += `${preg.pregunta}`;
@@ -45,9 +49,16 @@ function cargarPreguntas(){
     })
     .catch(error => console.log("Hubo un error: " + error.message))
 }
+cargarPreguntas();
+
+
 
 function imprimirSeleccion1(){
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp1}`)
+    respuesta=(document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: "+respuesta)
+    console.log("Correcta: "+ correcta)
 }
 document.getElementById('btn1').onclick = function(){
     imprimirSeleccion1();
@@ -55,6 +66,9 @@ document.getElementById('btn1').onclick = function(){
 
 function imprimirSeleccion2(){
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp2}</b>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp2}`)
+    respuesta=(document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: "+respuesta)
 }
 document.getElementById('btn2').onclick = function(){
     imprimirSeleccion2();
@@ -62,6 +76,9 @@ document.getElementById('btn2').onclick = function(){
 
 function imprimirSeleccion3(){
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp3}</b>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp3}`)
+    respuesta=(document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: "+respuesta)
 }
 document.getElementById('btn3').onclick = function(){
     imprimirSeleccion3();
@@ -69,8 +86,17 @@ document.getElementById('btn3').onclick = function(){
 
 function imprimirSeleccion4(){
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp4}</b>`
+    document.getElementById('p3').setAttribute('value', `${preg.resp4}`)
+    respuesta=(document.getElementById('p3').getAttribute('value'))
+    console.log("respuesta: "+respuesta)
 }
 document.getElementById('btn4').onclick = function(){
     imprimirSeleccion4();
 }
-cargarPreguntas();
+
+function imprimirAlerta(){
+    alert(respuesta==correcta?'Respuesta Correcta':'Respuesta Incorrecta, Sigue Intentando')
+}
+document.getElementById('btn5').onclick = function(){
+    imprimirAlerta()
+};
