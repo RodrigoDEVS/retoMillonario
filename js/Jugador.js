@@ -1,52 +1,62 @@
-
-
 (function () {
-  //Crear un nodo
-  var listar = document.createElement("input");
+  //Crearando variables para los nodos
+  var listar = document.createElement("input"),
+    btnnuevoJugador = document.createElement("input"),
+    inputNombre = document.createElement("input"),
+    divContenedor = document.getElementById("formulario");
+
+  //Asignando atributos
+
   listar.setAttribute("type", "button");
   listar.setAttribute("value", "Listar jugadores");
-  var btnnuevoJugador = document.createElement("input");
+  listar.className = "boton";
   btnnuevoJugador.setAttribute("type", "button");
   btnnuevoJugador.setAttribute("value", "Nuevo Jugador");
-  
-  var divContenedor = document.getElementById("formulario");
-  divContenedor.appendChild(listar);
-  divContenedor.appendChild(btnnuevoJugador)
+  btnnuevoJugador.className = "boton";
+  inputNombre.setAttribute("type","text");
+  inputNombre.setAttribute("id","nombre-jugador");
+  inputNombre.setAttribute("placeholder","Indica tu nombre")
+  inputNombre.className="error";
+ 
 
-  //Funciones 
+  //Agregando elementos
+  divContenedor.appendChild(inputNombre);
+  divContenedor.appendChild(btnnuevoJugador);
+  divContenedor.appendChild(listar);
+
+  //Funciones
 
   function nuevoJugador() {
     let jugadores = servicioJugadoresLeer();
     let nombreJugador = document.getElementById("nombre-jugador").value;
-    if(nombreJugador.length>1) {
-      var nuevo = { _id: jugadores.length, name: nombreJugador, _v: 0, score: 0 };
+    if (nombreJugador.length > 1) {
+      var nuevo = {
+        _id: jugadores.length,
+        name: nombreJugador,
+        _v: 0,
+        score: 0,
+      };
       servicioJugadoresAgregar(nuevo);
-     location.href = "preguntas.html";
-    
-    }else {
-      return (alert("Agregue el nombre de un jugador"));
-     }
+      location.href = "preguntas.html";
+    } else {
+      return alert("Agregue un nombre con minimo 4 caracteres");
+    }
   }
 
-  function capturaIdJugador(){
-      
-  }
+  function capturaIdJugador() {}
 
-  function eliminar(tamaño){
+  function eliminar(tamaño) {
     //Buscando id
-    const url="btn";
-    for(let i=1; i<=tamaño;i++){
-        id=url+i;
-            var botoEliminar = document.getElementById(id);
-            botoEliminar.addEventListener("click",(event)=>{
-                event.target.parentNode.parentNode.remove();
-                console.log([i-1]);
-            })
-            
-}
-
-}
-
+    const url = "btn";
+    for (let i = 1; i <= tamaño; i++) {
+      id = url + i;
+      var botoEliminar = document.getElementById(id);
+      botoEliminar.addEventListener("click", (event) => {
+        event.target.parentNode.parentNode.remove();
+        console.log([i - 1]);
+      });
+    }
+  }
 
   //crear promesa
 
@@ -65,13 +75,12 @@
       cont += 1;
     }
 
-    var tamaño=cont-1;   
+    var tamaño = cont - 1;
 
     document.getElementById("tabla1").innerHTML = cad;
-    eliminar(tamaño)          
-     
+    eliminar(tamaño);
   }
 
   listar.addEventListener("click", crearPromesa);
-  btnnuevoJugador.addEventListener("click",nuevoJugador);
+  btnnuevoJugador.addEventListener("click", nuevoJugador);
 })();
