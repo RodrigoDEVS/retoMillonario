@@ -12,7 +12,10 @@
   <div id="opciones" >
 
       <h1 class="centrado">Jugadores</h1>
-      <button onclick="location.href='preguntas.html'" ><a>Nuevo Juego</a></button>
+      <label for="nombre-jugador">Nombre Jugador</label>
+      <input type="text" id="nombre-jugador"/>
+      <br>
+     <button onclick="nuevoJugador()" ><a>Nuevo Juego</a></button>
     
   </div>
     <div class="container">
@@ -21,6 +24,8 @@
             </table>
         </div>
     </div>
-    <script src="listaJugador.js"></script>
+    <script src="../js/servicios/servicioCookie.js"></script>
+    <script src="../js/servicios/servicioJugadores.js"></script>
+    <script src="../js/Jugador.js"></script>    
 </body>
-</html>
+</html> 
