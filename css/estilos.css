@@ -9,6 +9,7 @@ p {
 }
 
 div#question {
+    position: relative;
     margin: auto;
     font-size: 20px;
     width: 100vh;
@@ -26,5 +27,10 @@ div#question {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f9ff', endColorstr='#a1dbff', GradientType=0);
     /* IE6-9 */
     box-shadow: 0px 2px 4px #b4b4b4;
-
+}
+#p1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

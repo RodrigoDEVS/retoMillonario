@@ -153,7 +153,7 @@ document.getElementById('btn5').onclick = function () {
 };
 
 function respuestaError() {
-    window.location.replace("../html/index.html")
+    window.location.replace("../html/final.html")
 }
 
 function terminarJuego() {

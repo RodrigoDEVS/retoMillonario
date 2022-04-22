@@ -2,7 +2,7 @@
     //Variables creadas como nodo 
     var botonSalir = document.createElement("button");
     botonSalir.textContent="Rendirse"
-    botonSalir.className="boton_verificar"
+    botonSalir.className="btn btn-danger"
 
     //Agregando nodo 
     var divContenedor = document.getElementById("contenedor");
