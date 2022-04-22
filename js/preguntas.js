@@ -38,7 +38,7 @@ function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function cargarPreguntas() {
-    (fetch('/data/preguntas.json'))
+    (fetch('../data/preguntas.json'))
         .then(resp => resp.json())
         .then(preguntas => {
             incremento()
@@ -153,10 +153,10 @@ document.getElementById('btn5').onclick = function () {
 };
 
 function respuestaError() {
-    window.location.replace("index.html")
+    window.location.replace("../html/index.html")
 }
 
 function terminarJuego() {
-    window.location.replace("final.html")
+    window.location.replace("../html/final.html")
 }
 window.onload = cargarPreguntas()

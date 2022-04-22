@@ -3,7 +3,7 @@ function nuevoJugador(){
     let nombreJugador = document.getElementById("nombre-jugador").value;    
     var nuevo = {_id: jugadores.length, name: nombreJugador, _v: 0, score: 0};
     servicioJugadoresAgregar(nuevo);
-    location.href='preguntas.html';    
+    location.href='../html/preguntas.html';    
 }
 
 (function(){
