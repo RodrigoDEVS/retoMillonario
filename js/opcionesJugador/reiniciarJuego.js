@@ -1,16 +1,19 @@
 (function(){
 
     //creando nodo
-    var botonReiniciar = document.createElement("button");
-    botonReiniciar.textContent="Reiniciar"
+    var botonReiniciar = document.createElement("input");
+    botonReiniciar.setAttribute("type", "button");
+    botonReiniciar.setAttribute("value", " Reiniciar juego");
 
+      botonReiniciar.className="boton";
     //Agregando nodo 
 
-    var divContenedor = document.getElementById("contenedorSalir");
+    var divContenedor = document.getElementById("formularioId");
         divContenedor.appendChild(botonReiniciar);
     
      //funcion rendirse 
      rendirse =()=>{
+
         location.href = "index.html";
      }
      
