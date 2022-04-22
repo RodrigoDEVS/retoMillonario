@@ -1,9 +1,9 @@
 function nuevoJugador(){
-    //let jugadores = servicioJugadoresLeer();
+    let jugadores = servicioJugadoresLeer();
     let nombreJugador = document.getElementById("nombre-jugador").value;    
     var nuevo = {_id: jugadores.length, name: nombreJugador, _v: 0, score: 0};
     servicioJugadoresAgregar(nuevo);
-    location.href='../html/preguntas.html';    
+    location.href='preguntas.html';    
 }
 
 (function(){

@@ -2,7 +2,7 @@ var servicioJugadoresData = []
 const cookieName='jugadores';
 
 function servicioJugadoresLeer(){
-    servicioJugadoresData = JSON.parse(getCookie(cookieName) || []);
+    servicioJugadoresData = JSON.parse(getCookie(cookieName) || '[]');
     return servicioJugadoresData;
 }
 
