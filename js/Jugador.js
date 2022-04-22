@@ -16,7 +16,6 @@
   inputNombre.setAttribute("type","text");
   inputNombre.setAttribute("id","nombre-jugador");
   inputNombre.setAttribute("placeholder","Indica tu nombre")
-  inputNombre.className="error";
  
 
   //Agregando elementos
