@@ -29,7 +29,7 @@ body {
 .principal .formulario input[type=text] {
 	margin-bottom: 20px;
 	padding: 10px;
-	width: 50%;
+	width: 20%;
 }
 
 .principal .formulario input[type=text].error {
