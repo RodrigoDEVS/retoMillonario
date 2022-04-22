@@ -1,21 +1,32 @@
-function nuevoJugador() {
-  let jugadores = servicioJugadoresLeer();
-  let nombreJugador = document.getElementById("nombre-jugador").value;
-  var nuevo = { _id: jugadores.length, name: nombreJugador, _v: 0, score: 0 };
-  servicioJugadoresAgregar(nuevo);
-  location.href = "preguntas.html";
-}
+
 
 (function () {
   //Crear un nodo
   var listar = document.createElement("input");
   listar.setAttribute("type", "button");
-  listar.setAttribute("value", "Listarjugadores");
-  var divContenedor = document.getElementById("opciones");
+  listar.setAttribute("value", "Listar jugadores");
+  var btnnuevoJugador = document.createElement("input");
+  btnnuevoJugador.setAttribute("type", "button");
+  btnnuevoJugador.setAttribute("value", "Nuevo Jugador");
+  
+  var divContenedor = document.getElementById("formulario");
   divContenedor.appendChild(listar);
-
+  divContenedor.appendChild(btnnuevoJugador)
 
   //Funciones 
+
+  function nuevoJugador() {
+    let jugadores = servicioJugadoresLeer();
+    let nombreJugador = document.getElementById("nombre-jugador").value;
+    if(nombreJugador.length>1) {
+      var nuevo = { _id: jugadores.length, name: nombreJugador, _v: 0, score: 0 };
+      servicioJugadoresAgregar(nuevo);
+     location.href = "preguntas.html";
+    
+    }else {
+      return (alert("Agregue el nombre de un jugador"));
+     }
+  }
 
   function capturaIdJugador(){
       
@@ -62,4 +73,5 @@ function nuevoJugador() {
   }
 
   listar.addEventListener("click", crearPromesa);
+  btnnuevoJugador.addEventListener("click",nuevoJugador);
 })();
