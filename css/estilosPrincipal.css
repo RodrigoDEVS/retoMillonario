@@ -14,13 +14,12 @@ body {
 
 
 .principal {
-	background: #F44336;
-	border-top: 20px solid #D32F2F;
+	background: #62bfc2c7;
+	border-top: 20px solid #63c0c4f1;
 	color: #fff;
 	padding: 50px 0;
 	width: 100%;
 }
-
 
 .principal .formulario {
 	color: #212121;
@@ -40,7 +39,8 @@ body {
 
 .principal .formulario .boton {
 	background: none;
-	border: 1px solid #131212;
+	border: 2px solid #131212;
+	border-radius: 10px;
 	color: #fff;
 	display: inline-block;
 	font-size: 16px;
