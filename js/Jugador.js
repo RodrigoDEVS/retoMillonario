@@ -39,8 +39,15 @@
       servicioJugadoresAgregar(nuevo);
       location.href = "preguntas.html";
     } else {
-      return alert("Agregue un nombre con minimo 4 caracteres");
-    }
+      inputNombre.setAttribute("placeholder","Agrega una tarea validad");
+      inputNombre.className="error";
+      return false
+}
+  }
+
+  var comprobarInput =function(){
+    inputNombre.className="";
+    inputNombre.setAttribute("placeholder","Agrega tu nombre");   
   }
 
   function capturaIdJugador() {}
@@ -58,12 +65,10 @@
     }
   }
 
-  //crear promesa
 
   var crearPromesa = function () {
     pintarJugadores(servicioJugadoresLeer());
   };
-  //evento
 
   function pintarJugadores() {
     let cont = 1;
@@ -81,6 +86,9 @@
     eliminar(tamaño);
   }
 
+    //evento
+
   listar.addEventListener("click", crearPromesa);
   btnnuevoJugador.addEventListener("click", nuevoJugador);
+  inputNombre.addEventListener("click",comprobarInput);
 })();
