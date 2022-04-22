@@ -17,6 +17,10 @@ function nuevoJugador() {
 
   //Funciones 
 
+  function capturaIdJugador(){
+      
+  }
+
   function eliminar(tamaño){
     //Buscando id
     const url="btn";
@@ -29,6 +33,7 @@ function nuevoJugador() {
             })
             
 }
+
 }
 
 
