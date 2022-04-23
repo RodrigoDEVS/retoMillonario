@@ -1,6 +1,7 @@
 const p1 = document.querySelector(`#p1`)
 const p2 = document.querySelector(`#p2`)
 const p3 = document.querySelector(`#p3`)
+const p4 = document.querySelector(`#p4`)
 const btn1 = document.querySelector(`#btn1`)
 const btn2 = document.querySelector(`#btn2`)
 const btn3 = document.querySelector(`#btn3`)
@@ -15,6 +16,7 @@ let min = 1;
 let max = 5;
 
 let puntaje = 0;
+
 
 function incremento() {
     if (puntaje < 100) {
@@ -51,7 +53,10 @@ function cargarPreguntas() {
             })
             console.log("Pregunta No: " + preg.indice)
             console.log("Puntaje Acumulado: " + puntaje)
+            PintarNombreJugador();
+            cargarPuntaje(puntaje);           
             correcta = (preg.verdadera)
+            
             document.getElementById('p1').innerHTML = `${preg.pregunta}`
 
             document.getElementById('btn1').innerHTML = `${preg.resp1}`
@@ -109,6 +114,7 @@ document.getElementById('btn4').onclick = function () {
 }
 
 function imprimirAlerta() {
+    
     if (puntaje == 1000) {
         swal.fire({
             icon: 'success',
@@ -157,6 +163,20 @@ function respuestaError() {
 }
 
 function terminarJuego() {
+    servicioJugadoresCargarPuntajeFinal(servicioJugadoresLeerJugadorActual());
     window.location.replace("../html/final.html")
 }
 window.onload = cargarPreguntas()
+
+function PintarNombreJugador(){ 
+    let jugadorActual=servicioJugadoresLeerJugadorActual();
+    console.log(jugadorActual);
+    document.getElementById('p4').innerHTML = `Jugador: ${jugadorActual.name}`    
+}
+
+
+function cargarPuntaje(puntaje){
+    let jugadorActual=servicioJugadoresLeerJugadorActual();
+    jugadorActual.score = puntaje;
+    servicioJugadoresAgregarJugadorActual(jugadorActual);      
+}

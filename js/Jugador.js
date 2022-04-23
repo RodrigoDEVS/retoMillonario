@@ -23,6 +23,8 @@
   divContenedor.appendChild(btnnuevoJugador);
   divContenedor.appendChild(listar);
 
+  var idJugadorActual;
+
   //Funciones
 
   function nuevoJugador() {
@@ -32,10 +34,10 @@
       var nuevo = {
         _id: jugadores.length,
         name: nombreJugador,
-        _v: 0,
         score: 0,
       };
       servicioJugadoresAgregar(nuevo);
+      servicioJugadoresAgregarJugadorActual(nuevo);      
       location.href = "preguntas.html";
     } else {
       inputNombre.setAttribute("placeholder","Agrega una tarea validad");
@@ -49,8 +51,7 @@
     inputNombre.setAttribute("placeholder","Agrega tu nombre");   
   }
 
-  function capturaIdJugador() {}
-
+  
   function eliminar(tamaño) {
     //Buscando id
     const url = "btn";
@@ -66,22 +67,24 @@
 
 
   var crearPromesa = function () {
-    pintarJugadores(servicioJugadoresLeer());
+    pintarJugadores(servicioJugadoresLeer());    
   };
 
   function pintarJugadores() {
     let cont = 1;
-    let cad = "<tr><th>Nombre</th><th>Puntaje</th><th>Id</th></tr>";
+    let cad = "<tr><th>Nombre</th><th>Puntaje</th><th></th></tr>";
     for (let jugador of servicioJugadoresData) {
       cad += `<tr><td>${jugador.name}</td>
                 <td>${jugador.score}</td>
-                <td><input type="button" class="btne" id="btn${cont}" value="Eiminar"></input></td></tr>`;
-      cont += 1;
+                <td><input type="button" class="btne" id="btn${cont}" value="Eiminar" onClick="servicioJugadoresBuscarJugador(${cont})"></input></td></tr>     
+                `;
+      cont += 1;      
+          
     }
 
     var tamaño = cont - 1;
-
-    document.getElementById("tabla1").innerHTML = cad;
+    
+    document.getElementById("tabla1").innerHTML = cad;        
     eliminar(tamaño);
   }
 
@@ -90,4 +93,5 @@
   listar.addEventListener("click", crearPromesa);
   btnnuevoJugador.addEventListener("click", nuevoJugador);
   inputNombre.addEventListener("click",comprobarInput);
+  
 })();

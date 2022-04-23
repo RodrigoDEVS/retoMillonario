@@ -10,7 +10,8 @@
 
      //funcion rendirse 
      rendirse =()=>{
-        location.href = "final.html";
+      servicioJugadoresCargarPuntajeFinal(jugadorActual);
+      location.href = "final.html";
      }
      
      //Agregando evento 

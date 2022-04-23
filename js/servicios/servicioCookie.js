@@ -20,3 +20,8 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function deleteCookie(cname, cvalue){
+  let expires = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  document.cookie = cname + "=" + cvalue + ";" + expires;
+}
