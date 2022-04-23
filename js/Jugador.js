@@ -40,10 +40,12 @@
       servicioJugadoresAgregarJugadorActual(nuevo);      
       location.href = "preguntas.html";
     } else {
-      inputNombre.setAttribute("placeholder","Agrega una tarea validad");
+      inputNombre.setAttribute("placeholder","Agrega un nombre valido");
       inputNombre.className="error";
       return false
-}
+
+    }
+    
   }
 
   var comprobarInput =function(){
@@ -51,8 +53,8 @@
     inputNombre.setAttribute("placeholder","Agrega tu nombre");   
   }
 
-  
   function eliminar(tamaño) {
+
     //Buscando id
     const url = "btn";
     for (let i = 1; i <= tamaño; i++) {
@@ -60,9 +62,10 @@
       var botoEliminar = document.getElementById(id);
       botoEliminar.addEventListener("click", (event) => {
         event.target.parentNode.parentNode.remove();
-        console.log([i - 1]);
       });
     }
+    
+    servicioEliminarJugador(0);
   }
 
 
@@ -82,6 +85,7 @@
           
     }
 
+    console.log(servicioJugadoresData)
     var tamaño = cont - 1;
     
     document.getElementById("tabla1").innerHTML = cad;        
