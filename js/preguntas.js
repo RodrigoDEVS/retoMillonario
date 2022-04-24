@@ -43,19 +43,19 @@ function cargarPreguntas() {
     (fetch('../data/preguntas.json'))
         .then(resp => resp.json())
         .then(preguntas => {
-            incremento()
+            incremento();
             let index = randomInteger(min, max);
             preguntas.map(element => {
                 if (element.indice == index) {
-                    preg = (element)
+                    preg = (element);
                 }
 
             })
-            console.log("Pregunta No: " + preg.indice)
-            console.log("Puntaje Acumulado: " + puntaje)
-            PintarNombreJugador();
-            cargarPuntaje(puntaje);           
-            correcta = (preg.verdadera)
+            console.log("Pregunta No: " + preg.indice);
+            console.log("Puntaje Acumulado: " + puntaje);
+            PintarNombreJugador();      
+            cargarPuntaje(puntaje);               
+            correcta = (preg.verdadera);
             
             document.getElementById('p1').innerHTML = `${preg.pregunta}`
 
@@ -74,10 +74,10 @@ function cargarPreguntas() {
 
 function imprimirSeleccion1() {
     document.getElementById('p3').innerHTML = `Su Selección es: <br><b>${preg.resp1}</b></br>`
-    document.getElementById('p3').setAttribute('value', `${preg.resp1}`)
-    respuesta = (document.getElementById('p3').getAttribute('value'))
-    console.log("respuesta: " + respuesta)
-    console.log("Correcta: " + correcta)
+    document.getElementById('p3').setAttribute('value', `${preg.resp1}`);
+    respuesta = (document.getElementById('p3').getAttribute('value'));
+    console.log("respuesta: " + respuesta);
+    console.log("Correcta: " + correcta);
 }
 document.getElementById('btn1').onclick = function () {
     imprimirSeleccion1();
@@ -115,7 +115,7 @@ document.getElementById('btn4').onclick = function () {
 
 function imprimirAlerta() {
     
-    if (puntaje == 1000) {
+    if (puntaje == 1500) {
         swal.fire({
             icon: 'success',
             title: 'Has Ganado',
@@ -178,5 +178,6 @@ function PintarNombreJugador(){
 function cargarPuntaje(puntaje){
     let jugadorActual=servicioJugadoresLeerJugadorActual();
     jugadorActual.score = puntaje;
+    console.log(jugadorActual.score);
     servicioJugadoresAgregarJugadorActual(jugadorActual);      
 }

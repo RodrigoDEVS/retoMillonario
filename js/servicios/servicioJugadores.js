@@ -41,17 +41,14 @@ function servicioJugadoresLeerJugadorActual(){
 }
 
 function servicioJugadoresCargarPuntajeFinal(jugadorActual){
-    console.log(jugadorActual);
     let listaJugadores = servicioJugadoresLeer();
     
     listaJugadores.forEach(jugador => {
         if(jugadorActual._id == jugador._id)
         {
-            console.log("llegue");
             jugador.score = jugadorActual.score;
         }        
     });
-    console.log(listaJugadores);
-
+    
     setCookie(cookieName, JSON.stringify(listaJugadores));
 }
