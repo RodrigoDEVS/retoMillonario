@@ -14,6 +14,7 @@
         
         
     let puntajeFinal = servicioJugadoresLeerJugadorActual();
+    console.log(puntajeFinal);
     document.getElementById('score').innerHTML = `Su puntaje es: ${puntajeFinal.score}`;
 
      //funcion rendirse 

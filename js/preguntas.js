@@ -12,6 +12,15 @@ let preg = {};
 let correcta = "";
 let respuesta = "";
 
+//Variables creadas como nodo 
+var botonSalir = document.createElement("button");
+botonSalir.textContent="Rendirse"
+botonSalir.className="btn btn-danger"
+
+//Agregando nodo 
+var divContenedor = document.getElementById("contenedor");
+    divContenedor.appendChild(botonSalir);
+
 let min = 1;
 let max = 5;
 
@@ -53,8 +62,8 @@ function cargarPreguntas() {
             })
             console.log("Pregunta No: " + preg.indice);
             console.log("Puntaje Acumulado: " + puntaje);
-            PintarNombreJugador();      
-            cargarPuntaje(puntaje);               
+            PintarNombreJugador();     
+                          
             correcta = (preg.verdadera);
             
             document.getElementById('p1').innerHTML = `${preg.pregunta}`
@@ -123,6 +132,7 @@ function imprimirAlerta() {
             showConfirmButton: false,
             timer: 2000
         })
+        cargarPuntaje(puntaje);
         setTimeout(terminarJuego, 2500)
     } else if (respuesta == correcta) {
         swal.fire({
@@ -130,6 +140,7 @@ function imprimirAlerta() {
             title: 'Respuesta Correcta',
             showConfirmButton: true,
         })
+        cargarPuntaje(puntaje);
         cargarPreguntas()
         if (min == 1) {
             puntaje += 100;
@@ -143,6 +154,9 @@ function imprimirAlerta() {
             puntaje += 500;
         }
     } else {
+        puntaje=0;
+        cargarPuntaje(puntaje);
+        console.log("holitas",puntaje);
         Swal.fire({
             icon: 'error',
             title: 'Respuesta Incorrecta',
@@ -163,6 +177,7 @@ function respuestaError() {
 }
 
 function terminarJuego() {
+    
     servicioJugadoresCargarPuntajeFinal(servicioJugadoresLeerJugadorActual());
     window.location.replace("../html/final.html")
 }
@@ -170,7 +185,7 @@ window.onload = cargarPreguntas()
 
 function PintarNombreJugador(){ 
     let jugadorActual=servicioJugadoresLeerJugadorActual();
-    console.log(jugadorActual);
+    //console.log(jugadorActual);
     document.getElementById('p4').innerHTML = `Jugador: ${jugadorActual.name}`    
 }
 
@@ -181,3 +196,14 @@ function cargarPuntaje(puntaje){
     console.log(jugadorActual.score);
     servicioJugadoresAgregarJugadorActual(jugadorActual);      
 }
+
+
+
+ //funcion rendirse 
+ rendirse =()=>{
+    cargarPuntaje(puntaje);
+    location.href = "final.html";
+ }
+ 
+ //Agregando evento 
+ botonSalir.addEventListener("click",rendirse);
