@@ -53,8 +53,7 @@ function cargarPreguntas() {
             })
             console.log("Pregunta No: " + preg.indice);
             console.log("Puntaje Acumulado: " + puntaje);
-            PintarNombreJugador();      
-            cargarPuntaje(puntaje);               
+            PintarNombreJugador();               
             correcta = (preg.verdadera);
             
             document.getElementById('p1').innerHTML = `${preg.pregunta}`
@@ -114,8 +113,7 @@ document.getElementById('btn4').onclick = function () {
 }
 
 function imprimirAlerta() {
-    
-    if (puntaje == 1500) {
+    if (puntaje == 1500) {  
         swal.fire({
             icon: 'success',
             title: 'Has Ganado',
@@ -123,8 +121,10 @@ function imprimirAlerta() {
             showConfirmButton: false,
             timer: 2000
         })
+        cargarPuntaje(puntaje); 
         setTimeout(terminarJuego, 2500)
     } else if (respuesta == correcta) {
+        cargarPuntaje(puntaje);
         swal.fire({
             icon: 'success',
             title: 'Respuesta Correcta',
@@ -150,6 +150,8 @@ function imprimirAlerta() {
             showConfirmButton: false,
             timer: 1500
         })
+        puntaje = 0;
+        cargarPuntaje(puntaje);
         setTimeout(respuestaError, 2000)
     }
 }
@@ -159,6 +161,7 @@ document.getElementById('btn5').onclick = function () {
 };
 
 function respuestaError() {
+    puntaje = 0;
     window.location.replace("../html/final.html")
 }
 
