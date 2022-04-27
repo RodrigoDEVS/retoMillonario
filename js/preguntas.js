@@ -197,7 +197,8 @@ function cargarPuntaje(puntaje){
     let jugadorActual=servicioJugadoresLeerJugadorActual();
     jugadorActual.score = puntaje;
     console.log(jugadorActual.score);
-    servicioJugadoresAgregarJugadorActual(jugadorActual);      
+    servicioJugadoresAgregarJugadorActual(jugadorActual);
+    servicioJugadoresCargarPuntajeFinal(jugadorActual);      
 }
 
 
@@ -205,6 +206,7 @@ function cargarPuntaje(puntaje){
  //funcion rendirse 
  rendirse =()=>{
     cargarPuntaje(puntaje);
+    console.log("Puntaje: "+puntaje)
     location.href = "final.html";
  }
  

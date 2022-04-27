@@ -18,12 +18,12 @@
     document.getElementById('score').innerHTML = `Su puntaje es: ${puntajeFinal.score}`;
 
      //funcion rendirse 
-     rendirse =()=>{ 
+     reiniciarJuego =()=>{ 
        location.href = "index.html";
      }
      
      //Agregando evento 
-     botonReiniciar.addEventListener("click",rendirse);
+     botonReiniciar.addEventListener("click",reiniciarJuego);
      
 })();
 
